@@ -2,7 +2,7 @@
 
 function getPlayer(){
 	//mem, db
-	require_once("utils.php");
+	require_once("../../models/utils.php");
 	$parsed_player = $mem->get($_SESSION['username']);
 	if(!$parsed_player){
 		$parsed_player = '{"health": "10"}';
@@ -13,7 +13,7 @@ function getPlayer(){
 
 function getEnemy(){
 	//mem, db
-	require_once("utils.php");
+	require_once("../../models/utils.php");
 	$parsed_enemy= $mem->get("enemy");
 	if(!$parsed_enemy){
 		$parsed_enemy= '{"health": "3"}';

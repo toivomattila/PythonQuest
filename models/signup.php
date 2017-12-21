@@ -39,7 +39,7 @@ function checkPassword($username, $password, $password_retype){
 
 
 function checkUsername($username){
-	$db = new PDO('mysql:host=localhost;dbname=PythonQuest;charset=utf8', 'PythonQuest', 'J2CovjA4HyzHGaHd');
+	require("utils.php");
 	$stmt = $db->prepare("SELECT username FROM Users WHERE username=:username");
 	$stmt->execute(array(":username" => $_POST['username']));
 	$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -52,7 +52,7 @@ function checkUsername($username){
 }
 
 function signUpUser($username, $password){
-	$db = new PDO('mysql:host=localhost;dbname=PythonQuest;charset=utf8', 'PythonQuest', 'J2CovjA4HyzHGaHd');
+	require("utils.php");
 
 	//Add user to the login-database
 	$stmt = $db->prepare("INSERT INTO Users(username, pwhash) VALUES(:username, :pwhash)");
