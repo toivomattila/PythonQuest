@@ -1,0 +1,17 @@
+		<script type="text/javascript" src="js/phaser.min.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="game/controllers/controller.js"></script>
+		<script type="text/javascript" src="game/controllers/fightController.js"></script>
+		<script type="text/javascript" src="game/views/fight.js"></script>
+	<script>
+		let canvas = document.createElement('canvas');
+		if(!!!(canvas.getContext && canvas.getContext('2d'))){
+			let noCanvasMessage = "<p>HTML5 canvas is not supported. Please download a browser that supports it.</br>";
+			noCanvasMessage += "For example <a href='https://www.google.com/chrome/index.html'>Chrome</a>";
+			noCanvasMessage += "or <a href='https://www.mozilla.org/firefox/new/'>Firefox</a>.</p>";
+			document.getElementById("game").append(noCanvasMessage);
+		}
+	</script>
+	<script>startGame()</script>
+		<div id="game">
+			<a href="?logout"><button>Logout</button></a>

@@ -1,0 +1,23 @@
+.container{
+	margin-top: 20px;
+	text-align: right;
+	max-width: 1024px;
+}
+canvas{
+	margin: 20px auto;
+	padding: 0;
+}
+@keyframes noJS{
+	0% {color: #FF0000;}
+	50% {color: #000000;}
+}
+.noJS{
+	color: #FF0000;
+	animation-name: noJS;
+	animation-duration: 0.8s;
+	animation-iteration-count: infinite;
+}
+#game{
+	min-width: 1024px;
+	text-align: center;
+}
