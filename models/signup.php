@@ -3,24 +3,34 @@
 function checkPassword($username, $password, $password_retype){
 	//Checks that password is valid
 	if($password == NULL){
+		error_log("null");
 		return False;
 	}else if(!preg_match('/[a-z]/', $password)){
+		error_log("a-z");
 		return False;
 	}else if(!preg_match('/[A-Z]/', $password)){
+		error_log("A-Z");
 		return False;
 	}else if(!preg_match('/\d/', $password)){
+		error_log("\d");
 		return False;
-	}else if(preg_match('/[^a-zA-Z\d]/', $password)){
+	}else if(preg_match('/^[a-zA-Z0-9- ]*$/', $password)){
+		error_log("special character");
 		return False;
 	}else if($password_retype == NULL){
+		error_log("retype null");
 		return False;
 	}else if(strlen($password) < 8){
+		error_log("too short");
 		return False;
 	}else if(strlen($password) > 255){
+		error_log("too long");
 		return False;
 	}else if($password != $password_retype){
+		error_log("don't match");
 		return False;
 	}else if($password == $username){
+		error_log("username");
 		return False;
 	}
 	//Password is okay
@@ -59,8 +69,11 @@ function signUpUser($username, $password){
 }
 function signup($username, $password, $password_retype){
 	if(isset($username)){
+		error_log("username not null");
 		if(checkUsername($username) && checkPassword($username, $password, $password_retype)){
+			error_log("username & password ok");
 			if(signUpUser($username, $password)){
+				error_log("signup succeded");
 				//Signup succeeded
 				return True;
 			}
