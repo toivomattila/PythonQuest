@@ -1,4 +1,5 @@
 <?php
+//Handles POSTs, asks model.php for data and passes it back to POSTer
 require_once('../models/model.php');
 if(isset($_POST['cmd']) && $_POST['cmd'] != null){
 	if($_POST['cmd'] == 'getPlayer'){

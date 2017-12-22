@@ -29,19 +29,24 @@ function checkPassword($username, $password, $password_retype){
 
 
 function checkUsername($username){
+	//Don't bother connecting to db if username is null
+	if($username == NULL){
+		return False;
+	}
+	//utils.php has $db & makes connection to database
 	require("utils.php");
 	$stmt = $db->prepare("SELECT username FROM Users WHERE username=:username");
 	$stmt->execute(array(":username" => $_POST['username']));
 	$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	if($username == NULL){
-		return False;
-	}else if($rows[0]['username'] == $username){
+	//Username was already taken
+	if($rows[0]['username'] == $username){
 		return False;
 	}
 	return True;
 }
 
 function signUpUser($username, $password){
+	//utils.php has $db & makes connection to database
 	require("utils.php");
 
 	//Add user to the login-database
@@ -52,7 +57,7 @@ function signUpUser($username, $password){
 	$stmt = $db->prepare("INSERT INTO Players(name, maxHealth, level, x, y) VALUES(:name, 10, 0, 30, 600)");
 	$stmt->execute(array(':name' => $username));
 
-	//Add  
+	//Login the user
 	$_SESSION['username'] = $username;
 
 	return True;

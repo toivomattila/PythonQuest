@@ -4,6 +4,8 @@
 		<script type="text/javascript" src="game/controllers/fightController.js"></script>
 		<script type="text/javascript" src="game/views/fight.js"></script>
 	<script>
+		//Check canvas support:
+		//Create canvas & if creating it failed, add a message to div #game
 		let canvas = document.createElement('canvas');
 		if(!!!(canvas.getContext && canvas.getContext('2d'))){
 			let noCanvasMessage = "<p>HTML5 canvas is not supported. Please download a browser that supports it.</br>";
@@ -12,6 +14,9 @@
 			document.getElementById("game").append(noCanvasMessage);
 		}
 	</script>
-	<script>startGame()</script>
+	<script>
+		//game/controller/controller.js
+		startGame()
+	</script>
 		<div id="game">
 			<a href="?logout"><button>Logout</button></a>

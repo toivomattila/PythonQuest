@@ -1,13 +1,16 @@
 "use strict";
 $(document).ready(function(){
+	//Hide both so that they actually slide open, not just pop
 	$(".password").animate({height: 'hide'});
 	$(".password_retype").animate({height: 'hide'});
 
 	$('input[name="password"]').keyup(function(){
+		//Didn't want to show anything if password is empty
 		if($('input[name="password"]').val() === ""){
 			$(".password").animate({height: 'hide'});
 			return;
 		}
+		//checkPassword returns true or a message why the password isn't okay
 		let pwdCheckResult = checkPassword($('input[name="password"]').val());
 		if(pwdCheckResult === true){
 			$(".password").text("Password is okay");
@@ -16,10 +19,12 @@ $(document).ready(function(){
 			$(".password").text(pwdCheckResult);
 			$(".password").animate({height: 'show'});
 		}
+		//Update the password_retype as well
 		checkPasswordMatch($('input[name="password_retype"]').val());
 
 	});
 	$('input[name="password_retype"]').keyup(function(){
+		//Update the password_retype
 		checkPasswordMatch($('input[name="password_retype"]').val());
 	});
 });
@@ -42,11 +47,12 @@ function checkPassword(psw){
 }
 
 function checkPasswordMatch(psw){
+	//Don't show anything if the input field is empty
 	if($('input[name="password_retype"]').val() === ""){
 		$(".password_retype").animate({height: 'hide'});
 		return;
 	}
-	//Check passwords match
+	//Check if passwords match & show a message
 	if($('input[name="password_retype"]').val() === $('input[name="password"]').val()){
 		$(".password_retype").text("Passwords match");
 		$(".password_retype").animate({height: 'hide'}, 'slow');
