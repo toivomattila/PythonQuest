@@ -8,19 +8,24 @@ Technical features were priority before the deadline which means the game isn't 
 ---Installation---
 
 Project is developed with Apache, MySQL and Memcached
+Languages: PHP, HTML, CSS, Javascript (with jQuery and Phaser)
 
 1. Get the source (i.e. git clone https://github.com/toivomattila/PythonQuest.git )
 2. Set up Apache to point to PythonQuest
 3. Set up database:
+
 	-Edit models/utils.php if database is no running on 127.0.0.1
+
 	-Either edit models/utils.php or create a user with username and password from models/utils.php
+
 	-Import PythonQuest.sql
 4. Set up memcached:
+
 	-Edit models/utils.php if memcached is not running on 127.0.0.1
 
 ---Points---
 
-Total 42
+Total 47
 
 Implemented features
 
@@ -31,6 +36,8 @@ Implemented features
 5 MVC-design pattern (Folder structure, view and controller are somewhat coupled, model trys to be decoupled from both)
 
 5 Responsive layout (The website responds to window size changes except for canvas which is fixed size)
+
+5 Documentation (this file & comments in the code)
 
 3 Canvas-element (the game is drawn to canvas)
 
