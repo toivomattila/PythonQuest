@@ -1,11 +1,10 @@
 <?php
+require_once("models/utils.php");
 function login($username, $password){
-	//utils.php has $db & makes connection to database
-	require_once("models/utils.php");
 	//Don't bother connecting to database if either username or password is NULL
 	if(isset($username) && $username != NULL && isset($password) && $password != NULL){
 		//Get usernames password hash
-		$stmt = $db->prepare("SELECT pwhash FROM Users WHERE username=:username");
+		$stmt = UtilsModel::Instance()->getDB()->prepare("SELECT pwhash FROM Users WHERE username=:username");
 		$stmt->execute(array(":username" => $username));
 		$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		//Fails if passwords don't match or username didn't match with anything in the database

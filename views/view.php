@@ -1,8 +1,16 @@
 <?php
 //Controller (index.php) calls renderView() -> doesn't need to be included
-function renderView(){
+function renderView($viewId){
+	$views = [
+		'default' => 'login.html',
+		'game' => 'game.html',
+		'login' => 'login.html',
+		'login_fail' => 'login_fail.html',
+		'signup' => 'signup.html',
+	];
 	include 'header.html';
-	//viewController() returns the file that needs to be included in the page 
-	include viewController();
+	//include viewController();
+	include $views[$viewId];
+	//include 'views/game.html';
 	include 'footer.html';
 }

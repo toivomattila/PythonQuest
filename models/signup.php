@@ -1,4 +1,5 @@
 <?php
+require_once("utils.php");
 
 function checkPassword($username, $password, $password_retype){
 	//Checks that password is valid
@@ -33,9 +34,7 @@ function checkUsername($username){
 	if($username == NULL){
 		return False;
 	}
-	//utils.php has $db & makes connection to database
-	require("utils.php");
-	$stmt = $db->prepare("SELECT username FROM Users WHERE username=:username");
+	$stmt = UtilsModel::Instance()->getDB()->prepare("SELECT username FROM Users WHERE username=:username");
 	$stmt->execute(array(":username" => $_POST['username']));
 	$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	//Username was already taken
@@ -46,8 +45,7 @@ function checkUsername($username){
 }
 
 function signUpUser($username, $password){
-	//utils.php has $db & makes connection to database
-	require("utils.php");
+	$db = UtilsModel::Instance()->getDB();
 
 	//Add user to the login-database
 	$stmt = $db->prepare("INSERT INTO Users(username, pwhash) VALUES(:username, :pwhash)");
